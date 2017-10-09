@@ -11,3 +11,12 @@ Local and remote Filesystem abstraction
 ## Introduction
 
 Fsys in an abstraction layer for interacting with local and remote Filesystems.
+
+### Implementations
+
+ - `nop`: Filesystem with sane defaults that does absolutely nothing.
+ - `virtual`: Filesystem that utilises memory
+ - `local`: Filesystem that utilises the local file system.
+   - As a side note `mmap` can be used as an option for the `local` setup.
+
+ 
