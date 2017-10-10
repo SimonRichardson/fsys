@@ -1,12 +1,38 @@
-hash: 83287534d31ecde6c0710549451225408ca1fb8f0babdb1409f6c4fc44d5494f
-updated: 2017-10-09T10:52:09.359665393+01:00
+hash: 652bfeb2c880349b7416c26fd096d277cad1c468f28c4d616b97587d807e3dd7
+updated: 2017-10-10T10:20:14.806955749+01:00
 imports:
-- name: github.com/pkg/errors
-  version: 2b3a18b5f0fb6b4f9190549597d3f962c02bc5eb
-- name: github.com/trussle/courier
-  version: cd9d71ac284a341fa09ae7e9bbe17d2d8f073360
+- name: github.com/aws/aws-sdk-go
+  version: df374c20d53ed082b8cf0d0da52b1a181abf387b
   subpackages:
-  - pkg/fs/ioext
-  - pkg/fs/lock
-  - pkg/fs/mmap
+  - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/endpoints
+  - aws/request
+  - aws/session
+  - aws/signer/v4
+  - internal/shareddefaults
+  - private/protocol
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/restxml
+  - private/protocol/xml/xmlutil
+  - service/s3
+  - service/sts
+- name: github.com/go-ini/ini
+  version: c787282c39ac1fc618827141a1f762240def08a3
+- name: github.com/jmespath/go-jmespath
+  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+- name: github.com/pkg/errors
+  version: c605e284fe17294bda444b34710735b29d1a9d90
 testImports: []

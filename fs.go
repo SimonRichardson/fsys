@@ -69,6 +69,16 @@ type File interface {
 	// Sync attempts to sync the file with the underlying storage or errors if it
 	// can't not succeed.
 	Sync() error
+
+	// ContentType returns the ContentType of file. If the underlying storage type
+	// doesn't support storing the ContentType then it will return the default
+	// content type - application/octet-stream
+	ContentType() string
+
+	// SetContentType sets the contentType of the file. In some underlying
+	// storage types this is a nop, and reading content from the file system will
+	// be ignored.
+	SetContentType(t string) error
 }
 
 // Releaser is returned by Lock calls.

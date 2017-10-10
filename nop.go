@@ -24,12 +24,14 @@ func (nopFilesystem) Lock(path string) (Releaser, bool, error)          { return
 
 type nopFile struct{}
 
-func (nopFile) Read(p []byte) (int, error)  { return len(p), nil }
-func (nopFile) Write(p []byte) (int, error) { return len(p), nil }
-func (nopFile) Close() error                { return nil }
-func (nopFile) Name() string                { return "" }
-func (nopFile) Size() int64                 { return 0 }
-func (nopFile) Sync() error                 { return nil }
+func (nopFile) Read(p []byte) (int, error)    { return len(p), nil }
+func (nopFile) Write(p []byte) (int, error)   { return len(p), nil }
+func (nopFile) Close() error                  { return nil }
+func (nopFile) Name() string                  { return "" }
+func (nopFile) Size() int64                   { return 0 }
+func (nopFile) Sync() error                   { return nil }
+func (nopFile) ContentType() string           { return defaultContentType }
+func (nopFile) SetContentType(t string) error { return nil }
 
 type nopReleaser struct{}
 

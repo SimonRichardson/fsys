@@ -145,11 +145,11 @@ func (fs *virtualFilesystem) Lock(path string) (r Releaser, existed bool, err er
 }
 
 type virtualFile struct {
-	name  string
-	mutex sync.Mutex
-	buf   bytes.Buffer
-	atime time.Time
-	mtime time.Time
+	name, contentType string
+	mutex             sync.Mutex
+	buf               bytes.Buffer
+	atime             time.Time
+	mtime             time.Time
 }
 
 func (f *virtualFile) Read(p []byte) (int, error) {
@@ -177,6 +177,13 @@ func (f *virtualFile) Size() int64 {
 }
 
 func (f *virtualFile) Sync() error { return nil }
+func (f *virtualFile) ContentType() string {
+	return f.contentType
+}
+func (f *virtualFile) SetContentType(t string) error {
+	f.contentType = t
+	return nil
+}
 
 type virtualFileInfo struct {
 	name  string

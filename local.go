@@ -112,6 +112,9 @@ func (f localFile) Size() int64 {
 	return fi.Size()
 }
 
+func (f localFile) ContentType() string           { return defaultContentType }
+func (f localFile) SetContentType(t string) error { return nil }
+
 type deletingReleaser struct {
 	path string
 	r    Releaser

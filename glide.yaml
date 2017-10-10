@@ -1,3 +1,10 @@
 package: github.com/trussle/fsys
 import:
   - package: github.com/pkg/errors
+  - package: github.com/aws/aws-sdk-go
+    subpackages:
+    - aws
+    - aws/credentials
+    - aws/awsutil
+    - aws/session
+    - service/s3
