@@ -116,8 +116,9 @@ func ErrNotFound(err error) bool {
 
 // Config encapsulates the requirements for generating a Filesystem
 type Config struct {
-	name string
-	mmap bool
+	name         string
+	mmap         bool
+	remoteConfig *RemoteConfig
 }
 
 // Option defines a option for generating a filesystem Config
@@ -152,9 +153,23 @@ func WithMMAP(mmap bool) Option {
 	}
 }
 
+// WithConfig adds a remote filesystem config to the configuration
+func WithConfig(remoteConfig *RemoteConfig) Option {
+	return func(config *Config) error {
+		config.remoteConfig = remoteConfig
+		return nil
+	}
+}
+
 // New creates a filesystem from a configuration or returns error if on failure.
 func New(config *Config) (fsys Filesystem, err error) {
 	switch strings.ToLower(config.name) {
+	case "remote":
+		fsys, err = NewRemoteFilesystem(config.remoteConfig)
+		if err != nil {
+			err = errors.Wrap(err, "remote filesystem")
+			return
+		}
 	case "local":
 		fsys = NewLocalFilesystem(config.mmap)
 	case "virtual":
