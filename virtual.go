@@ -45,7 +45,14 @@ func (fs *virtualFilesystem) Open(path string) (File, error) {
 	if !ok {
 		return nil, errNotFound{os.ErrNotExist}
 	}
-	return f, nil
+
+	return &virtualFile{
+		name:        f.name,
+		atime:       f.atime,
+		mtime:       f.mtime,
+		contentType: f.contentType,
+		buf:         *bytes.NewBuffer(f.buf.Bytes()),
+	}, nil
 }
 
 func (fs *virtualFilesystem) Rename(oldname, newname string) error {
